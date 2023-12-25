@@ -1,0 +1,6 @@
+[submodule "blog-source"]
+	path = blog-source
+	url = https://github.com/VoilaNeighbor/blog-source.git
+[submodule "blog-compiler"]
+	path = blog-compiler
+	url = https://github.com/VoilaNeighbor/blog-compiler.git
