@@ -1,0 +1,701 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Setting up a Blog Site</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3248b7f5-049d-43a3-9d83-beb99f80ee88" class="page sans"><header><h1 class="page-title">Setting up a Blog Site</h1><p class="page-description"></p></header><div class="page-body"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="13b6ccc9-e335-4ac0-ab5b-dc014a3c282b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Needs to port this blog / vault to the site.</div></figure><h2 id="c71e9044-1f3b-4819-b9a2-58193bde2a97" class="">A Helpless Programmer Saving Himself</h2><p id="ddda2738-de13-4c2f-b895-e75ae2fc737f" class="">I’m an impetuous programmer, haunted by the urge to rewrite everything, and thus making little progress over time. The other day, I got a serious DDL in sight, but feeling myself falling into the same trap again. I got so panicked about botching the serious task that I couldn’t make any moves but stare at the screen. Then, I tried writing some soothing words to myself on a notebook. I jotted down a few points that I was unsatisfied with. Now the vague feeling had been cast down, I started to calm. It is since then that I have realized how writing something down helps you organize your mind and think more rationally.</p><p id="d639c185-ec80-4ff8-946d-43f24b57ebcf" class="">I’m also a forgetful programmer. I learn quite a few things, but I cannot remember every problem I solved. Every once in a while I’m confronted with the same problem I solved before. This is also where I found recording something was so useful.</p><p id="4a503e02-aa96-412e-8ea9-8af830867950" class="">I’ve been keeping notes on paper and on electrons for a while, but I have still not become a great engineer. My notes are still unorganized, if I ever tried to organize, and I still get digressed so often that has become a severe penalty on my efficiency both at work and at personal projects. It was not until I wrote my end-year self-assessment report that I found that you needed something to show up your sleeves. One can have thousands of dreams and intentions, but what matters are the products we materialize. So, I asked myself: why not set up a blog site if you want to improve your WEB skills? Why not post gamedev series if you want to get your indie games done? Of course, you do not have enough time to record every idea, so it’s a selective procedure that forces me to take the most important pieces.</p><p id="0e9c1f34-892d-43b4-880c-eeb435a1f17e" class="">And thus I got happy and full of motion, and it marks the commence of my blog site.</p><h2 id="9c5e921c-7e05-4b98-97cf-91a25db06a85" class="">A Wishlist to Taste the Sweetness in One Day</h2><p id="1a80517a-fa77-4225-9213-89be4e423b8f" class="">As you might’ve guessed, I’m also haunted by micro-optimization. Yet, in my failed pursuits of perfection, I’ve learned a key point maybe no one has told you: emotions matter. We really cannot stick to the most rational path if we don’t get anything in return for a long time. I’ve given up plans more than I could remember. What still lingers is the haunting fear of another failure. Trying to get it done without allowing for dirty points and you will become like me. In this case, the blog site, my first reaction was to build everything barehanded as I dream of. But finally, I managed to resist the urge.</p><p id="ec8f62d8-b8eb-4bac-8a34-48eb49e38ee1" class="">I start with writing down things I’d like to enjoy. I cannot enjoy multiple points at the same time or it’s going to be a mess, so this list helps me prioritize and sacrifice the lesser points in the bootstrap stage. Here’s what I want:</p><ul id="6a99fffe-f8fa-486d-a18f-72480004cb12" class="bulleted-list"><li style="list-style-type:disc">Showing off my “great” blogs to the world.<ul id="960dcf8c-8cda-4292-8dcb-29cf647c27e0" class="bulleted-list"><li style="list-style-type:circle">Also, it’s something concrete to show to my family, my friends and the future myself that I’m not wasting time day-dreaming, and really doing something.</li></ul></li></ul><ul id="6c8c50b6-51c3-4cc5-9632-4703a3f7964d" class="bulleted-list"><li style="list-style-type:disc">Set up a discussion panel for readers. I like making friends.</li></ul><ul id="2c25704d-22a7-4a2d-8562-d28d6011cf61" class="bulleted-list"><li style="list-style-type:disc">CSS styling stuff. I like beauty.<ul id="b2450010-de49-45f0-9e00-235a2edd3fe1" class="bulleted-list"><li style="list-style-type:circle">Also responsive, at least for both landscape and portrait.</li></ul></li></ul><ul id="0200a7b0-82fb-4abb-9ee3-d1d771aaeab1" class="bulleted-list"><li style="list-style-type:disc">Simplicity &amp; performance maniac. I’m in belief that simplicity in execution is proportional to simplicity in the code structure, in the large scale.</li></ul><ul id="3080bd92-533b-4ff6-99ff-8aafee1e8113" class="bulleted-list"><li style="list-style-type:disc">Customized markdown-to-HTML renderer.<ul id="bf1c6f1f-6b62-4740-9bd7-8d87021c690b" class="bulleted-list"><li style="list-style-type:circle">It’s going to be fun and small-scale to implement a subset.</li></ul></li></ul><ul id="e92fcbd6-da81-451e-b61b-59902201638c" class="bulleted-list"><li style="list-style-type:disc">Auditable blog changes, which encourages me to improve my blogs over time while keeping track of its history.</li></ul><ul id="729d0507-ca8d-4159-a478-d08ce667c51a" class="bulleted-list"><li style="list-style-type:disc">Also there are some other projects I’d like to develop, and share my experience on the site, but that is out of the scope of this blog.</li></ul><p id="74998d0d-d0bd-4adb-a8e7-5c75675fb5f8" class="">The wishlist is giving me great confidence, because I know in my heart that I won’t forget the good hopes even if I deviate to dirtier but quicker solutions for the top points.</p><h2 id="f5f74302-4c23-457d-8c3d-cc0cec085034" class="">A Plan to Ship My Great Blogs to the World</h2><p id="3f849a00-bc4a-4913-968e-b6ba3d76c39a" class="">If only considering content delivery, a static site will suffice. But I’m also going to explore more possibilities of frontend tech, so I shouldn’t limit myself to tailored blog tools such as Jekyll.</p><ul id="3e8ffaa5-b076-4d9d-8ce3-7fb4cff06a4e" class="bulleted-list"><li style="list-style-type:disc">I’ll stick to personal sites, because<ul id="9affffe8-7305-414e-aa8f-ffe6f6463fd4" class="bulleted-list"><li style="list-style-type:circle">Blog platforms are too limiting, yet I’m not content with just writing things alone.</li></ul><ul id="d8d29e74-2850-4740-8795-a6437335ad70" class="bulleted-list"><li style="list-style-type:circle">Blog platforms could monetize on you.<figure id="af08cb91-4b45-4bbe-a039-cc97582bfe76"><a href="https://en.wikipedia.org/wiki/Enshittification" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Enshittification</div><div class="bookmark-description">Enshittification, also known as platform decay,&amp;#91;1&amp;#93; is the pattern of decreasing quality of online platforms that act as two-sided markets. Enshittification can be seen as a form of rent-seeking.&amp;#91;2&amp;#93; Examples of alleged enshittification have included Amazon, Bandcamp, Facebook, Google Search, Quora, Reddit, and Twitter.</div></div><div class="bookmark-href"><img src="https://en.wikipedia.org/static/apple-touch/wikipedia.png" class="icon bookmark-icon"/>https://en.wikipedia.org/wiki/Enshittification</div></div></a></figure></li></ul><ul id="06c920a9-4b0f-4b9a-9509-c36f1329688a" class="bulleted-list"><li style="list-style-type:circle">Blog platforms might even try to take the patent of your work and forbid its availability on the Internet.</li></ul></li></ul><ul id="20e76b2e-bd04-48cb-b665-9b8763db5d19" class="bulleted-list"><li style="list-style-type:disc">I’ll start with GitHub pages, so I don’t have to cope with DNS or frontend servers.</li></ul><ul id="2c4f194e-ad7b-4262-ba26-b3bc0ff40af5" class="bulleted-list"><li style="list-style-type:disc">Since for the 1st stage, it is only going to be a simple text site, there is no need to introduce React and its friends, although I’m very familiar with them.</li></ul><p id="4f24e81a-b2bc-4496-9f88-7843abe2e061" class="">Now that I’ve created a simple GitHub Pages repo, and printed Hello world, I wanted to port this page, which was originally written on Notion, to my blog site. This is a nice shortcut, because the styling of Notion exports can be a good default start.</p><p id="dd953f4c-8dde-424f-a89f-ac0ee522c63b" class="">Modify the content of <em><em><em><em><em><em><em><em><em><em>index.html</em></em></em></em></em></em></em></em></em></em> to this:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2b1ba1c0-9466-47b8-8379-483859f4ff54" class="code"><code class="language-HTML">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./Setting up a Blog Site.html&quot;&gt;Setting up a Blog Site&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre><p id="f197a101-e990-4009-abd5-5aa9d6f7492f" class="">Once the changes are pushed to GitHub, I could start to visit the page via the hyperlink. Doesn’t take me too much time to arrive here! My first though was to write a Zig script to remove the garbage spit by Notion export, but soon I realized that my goal was just to set up an available blog somewhere on the WEB, so I put off the idea. Thanks to the wish list, I won’t be worried that I would forget the funny things I wanted to do. Similar to the <em><em><em><em><em><em><em><em><em>Single Responsibility Principle</em></em></em></em></em></em></em></em></em>, I’m trying a <em><em><em><em><em><em><em><em><em><em><em><em><em><em><em><em><em><em><em><em><em><em><em><em><em><em>Single Aim Principle</em></em></em></em></em></em></em></em></em></em></em></em></em></em></em></em></em></em></em></em></em></em></em></em></em></em> (SAP) for any of my progress. I found that “to-do list” sounded negative to me, hence I’ll use the term “wish list” hereafter.</p><h2 id="6ad3d246-6dcb-4e0d-971d-0c375de89181" class="">Retro</h2><p id="b7a55416-9069-4d42-914a-61e5c7e39230" class="">It’s far from finished, but I have already enjoyed it and remembered a great lesson. The me myself three months ago would definitely go heads straight, touching every fancy feature I could dream of, and give up because my hands are too small to hold all the big wishes. As I grow into a more experienced engineer, I am learning step by step, to eat my meal piece by piece.</p><p id="0f24981d-0146-44ea-9f5a-0b84773b50c9" class="">It takes confidence to do so. I was eager to prove myself, and turned out to always be running in the opposite way from success. Now I’m brave enough to admit that I cannot hold them all, so I resort to existing tools such as GitHub Pages to simplify the releasing procedure to a minimum, and utilized Notion, the tool at hand, which I’m writing this blog with, to export a static page. I’m getting rid of the eagerness to fix the “garbage” in Notion exports, and learning in return to follow a bigger picture. Somewhere in my heart I believe firmly that this is still in the vibe of geeks. I’m just learning how to walk farther without exhausting my will.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="874bc461-75f0-48d4-8244-ef296b498fca" class="code"><code class="language-HTML">&lt;ul id=&quot;d8d29e74-2850-4740-8795-a6437335ad70&quot; class=&quot;bulleted-list&quot;&gt;
+  &lt;li style=&quot;list-style-type:circle&quot;&gt;Blog platforms could monetize on you.
+    &lt;figure id=&quot;af08cb91-4b45-4bbe-a039-cc97582bfe76&quot;&gt;
+      &lt;a href=&quot;https://en.wikipedia.org/wiki/Enshittification&quot; class=&quot;bookmark source&quot;&gt;
+        &lt;div class=&quot;bookmark-info&quot;&gt;
+          &lt;div class=&quot;bookmark-text&quot;&gt;
+            &lt;div class=&quot;bookmark-title&quot;&gt;Enshittification&lt;/div&gt;
+            &lt;div class=&quot;bookmark-description&quot;&gt;Enshittification, also known as platform
+              decay,&amp;amp;#91;1&amp;amp;#93; is the pattern of decreasing quality of online platforms that act
+              as two-sided markets. Enshittification can be seen as a form of
+              rent-seeking.&amp;amp;#91;2&amp;amp;#93; Examples of alleged enshittification have included Amazon,
+              Bandcamp, Facebook, Google Search, Quora, Reddit, and Twitter.&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;bookmark-href&quot;&gt;
+            &lt;img src=&quot;https://en.wikipedia.org/static/apple-touch/wikipedia.png&quot;
+              class=&quot;icon bookmark-icon&quot;&gt;https://en.wikipedia.org/wiki/Enshittification
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/a&gt;
+    &lt;/figure&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre><p id="210b465c-83e9-426c-b7a7-70b82fb994ee" class="">So it really pays off. From the Notion export page, I learned about how they used CSS, such as <em><em><em><em><em><em><em><em><em>::marker</em></em></em></em></em></em></em></em></em> selectors. I learned about the <em><em><em><em><em><em><em><em>&lt;figure&gt;</em></em></em></em></em></em></em></em> HTML element. I dreamed a bit about fancy use cases of assigning a UUID to every note blocks. My imagination and exploration into an existing piece of work helped me learn ten times faster than poking around myself with crude tutorials.</p><p id="e8062925-35ae-4bfe-9c2a-4c473a1d1712" class="">I can’t help thinking about an item in the <em><em><em><em><em><em><em>Zig Zen</em></em></em></em></em></em></em> as well:</p><blockquote id="23357e67-a01a-47a6-8968-3e0565f4927d" class="">Avoid local maximums.</blockquote><p id="537e0eca-48a7-4a13-9590-a3a1f2613774" class="">So here I’m ending this blog with the quote, with my best regards to everyone who are willing to learn the hardest as they can and contribute to the realm of software engineering. Good luck to you and me!</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
