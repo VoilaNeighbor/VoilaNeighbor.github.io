@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Automate the Process of Posting a Blog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>Automate the Process of Posting a Blog</h1>
+
+  <p>
+    In the <a href="./Setting%20up%20a%20Blog%20Site.md">last blog</a>, I set up
+    a very crude blog site, with just a simple page exported from Notion. Now,
+    I'm adding essential features so that I could update my blogs without going
+    back to a Notion draft.
+  </p>
+
+  <p>
+    There are endless possibilities for a blog site. For editing, I could
+    introduce beasts into play such as <em>editor.js</em>, <em>Monaco</em> or
+    <em>Code Mirror</em>. For styling, I could introduce existing component
+    libraries like <em>Material UI</em>. For content scripting, I might set up
+    a backend server, which involves more than domain configuration and network
+    issues… I still remember that I am learning to take small steps on the
+    happy path to gain confidence; so no, not those fancy things, at least for
+    now.
+  </p>
+
+  <p>
+    The core of automating blog posts is the separation between the
+    blog source and how it's presented. To do this, I need a custom compiler. The
+    compiler should cut short paths tailored to my needs, otherwise, it won't be
+    any better than off-the-shelf solutions.
+  </p>
+
+  <p>
+    <img src="./automate-the-process-of-posting-a-blog.svg" alt="Repo Structure of My Blog">
+  </p>
+
+  <h2>
+    A Handmade Prototype as Reference
+  </h2>
+
+  <p>
+    The other day, I shared this concern to a friend: how do you test drive frontend
+    development efficiently? We need humans to check if the visuals are correct.
+  </p>
+
+  <p>
+    My friend, working at a big tech company, raised her eyebrow: "Nope. It's
+    actually straight forward. We have specialist UX designers working on
+    requirement documents, so we always have a concrete criterion to meet."
+  </p>
+
+  <p>
+    Something I overlooked before was that analysis and designing are arts of their
+    own. Even in agile development, a terse design document is still better than
+    nothing. This applies to personal projects, as well.
+  </p>
+
+  <p>
+    For me, the prototyping procedure is as simple as opening a local HTML draft
+    in the browser and toy with the styles.
+  </p>
+
+  <h2>
+    Rudimentary Implementation of the Markdown-to-HTML Renderer
+  </h2>
+
+
+</body>
+
+</html>
